@@ -32,11 +32,11 @@ module.exports = {
         //trackingId: `ADD YOUR TRACKING ID HERE`, // @todo
       },
     },
-    `gatsby-plugin-feed`,
+    // `gatsby-plugin-feed`, // todo fix
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
+        name: `Gatsby Starter Blog`, // @todo
         short_name: `GatsbyJS`,
         start_url: `/`,
         background_color: `#ffffff`,
