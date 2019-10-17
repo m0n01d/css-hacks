@@ -5,13 +5,16 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
+import { MDXRenderer } from "gatsby-plugin-mdx"
 
 class BlogPostTemplate extends React.Component {
   render() {
-    const post = this.props.data.markdownRemark
+    const [{ node: post }] = this.props.data.allMdx.edges
+    // const frontmatter =
+    // return <pre>{JSON.stringify(post.frontmatter, null, 2)}</pre>
+
     const siteTitle = this.props.data.site.siteMetadata.title
     const { previous, next } = this.props.pageContext
-
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO
@@ -38,7 +41,7 @@ class BlogPostTemplate extends React.Component {
               {post.frontmatter.date}
             </p>
           </header>
-          <section dangerouslySetInnerHTML={{ __html: post.html }} />
+          <MDXRenderer>{post.body}</MDXRenderer>
           <hr
             style={{
               marginBottom: rhythm(1),
@@ -90,14 +93,18 @@ export const pageQuery = graphql`
         author
       }
     }
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      id
-      excerpt(pruneLength: 160)
-      html
-      frontmatter {
-        title
-        date(formatString: "MMMM DD, YYYY")
-        description
+    allMdx(filter: { fields: { slug: { eq: $slug } } }) {
+      edges {
+        node {
+          body
+          id
+          excerpt(pruneLength: 160)
+          frontmatter {
+            title
+            date(formatString: "MMMM DD, YYYY")
+            description
+          }
+        }
       }
     }
   }
