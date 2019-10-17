@@ -1,9 +1,41 @@
 ---
-title: FF SHIT
+title: Firefox Fun
 date: "2015-05-01T22:12:03.284Z"
-description: "Hello World"
+description: "Some fun hacks I tried to get Firefox to behave"
 ---
-import Demo from './demo.js';
+import {WithRotation, DoesntScrollFF, WithoutRotation} from './demo.js';
 
-<Demo />
-HI i am a demo
+
+for the chat feature of our app at work, we relied on `flexbox` and `column-reverse` to set the order in which messages came in.
+
+Part of the challenge was keeping the scroll position at the *bottom* of the window.
+Firefox doesn't scroll when you apply `flex` and `column-reverse`
+This Div should not scroll in firefox
+<DoesntScrollFF />
+
+
+So to get around that I tried to use css rotation
+<WithRotation />
+
+However if I recall correctly that caused issues with Safari 11
+
+Unfortunately I don't have access to Safari 11 to test or get
+screenshots. You'll just have to trust me
+
+So I had to go back to the drawing board.
+
+
+This time I took advantage of [custom properties](https://css-tricks.com/css-attr-function-got-nothin-custom-properties/")
+
+
+I encode an `order` property on the list item as a css custom property.
+
+
+Then in the css I reset the `ul`'s flex direction to `column` and
+essentially reverse the order with the flexbox `order` property
+(multiplying it by -1)
+
+<WithoutRotation />
+
+Which as you can see almost works. The only problem is the scroll
+position is at the top. but the messages are in order.
