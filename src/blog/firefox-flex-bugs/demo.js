@@ -6,15 +6,17 @@ const xs = Array.from({ length: 20 }).map((_, i) => i)
 export const StyledUl = styled.ul`
   display: flex;
   flex-direction: column-reverse;
-  height: 100px;
+  height: 225px;
   overflow-y: scroll;
   border: 1px solid #eee;
+  border-radius: 4px;
+  padding: 2px 4px;
 `
 
 export const DoesntScrollFF = () => (
   <StyledUl>
     {xs.map(i => (
-      <li>`this is a message${i}`</li>
+      <li>this is a message {i}</li>
     ))}
   </StyledUl>
 )
@@ -54,7 +56,7 @@ export const WithoutRotation = () => (
   <WithoutRotation_>
     <StyledUl>
       {xs.map(n => (
-        <li style={{ "--order": n * -1 }}>{n}</li>
+        <li style={{ "--order": n * -1 }}>this is a message {n}</li>
       ))}
     </StyledUl>
   </WithoutRotation_>
