@@ -21,7 +21,7 @@ export const DoesntScrollFF = () => (
   </StyledUl>
 )
 
-const WithRotation_ = styled.div`
+const WithRotationStyled = styled.div`
   @supports (-moz-appearance: none) {
     ul {
       border: 1px solid red !important;
@@ -34,7 +34,7 @@ const WithRotation_ = styled.div`
   }
 `
 
-const WithoutRotation_ = styled.div`
+const WithoutRotationStyled = styled.div`
   @supports (-moz-appearance: none) {
     ul {
       border: 1px solid blue !important;
@@ -47,17 +47,17 @@ const WithoutRotation_ = styled.div`
 `
 
 export const WithRotation = () => (
-  <WithRotation_>
+  <WithRotationStyled>
     <DoesntScrollFF />
-  </WithRotation_>
+  </WithRotationStyled>
 )
 
 export const WithoutRotation = () => (
-  <WithoutRotation_>
+  <WithoutRotationStyled>
     <StyledUl>
       {xs.map(n => (
         <li style={{ "--order": n * -1 }}>this is a message {n}</li>
       ))}
     </StyledUl>
-  </WithoutRotation_>
+  </WithoutRotationStyled>
 )
