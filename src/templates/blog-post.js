@@ -30,6 +30,7 @@ class BlogPostTemplate extends React.Component {
             >
               {post.frontmatter.title}
             </h1>
+            <p>{post.frontmatter.author}</p>
             <p
               style={{
                 // ...scale(-1 / 5),
@@ -104,6 +105,7 @@ export const pageQuery = graphql`
             title
             date(formatString: "MMMM DD, YYYY")
             description
+            author
           }
         }
       }
