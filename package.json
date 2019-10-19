@@ -39,6 +39,8 @@
     "styled-components": "^4.4.0"
   },
   "devDependencies": {
+    "dotenv": "^8.2.0",
+    "inquirer": "^7.0.0",
     "prettier": "^1.18.2"
   },
   "homepage": "https://css-hacks.com",
@@ -55,7 +57,7 @@
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "start": "npm run develop",
+    "start": "node newPost.js && npm run develop",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing \""
   }
