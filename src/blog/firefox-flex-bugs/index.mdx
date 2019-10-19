@@ -1,12 +1,12 @@
 ---
 title: Firefox Fun
-date: "2015-05-01T22:12:03.284Z"
-description: "Some fun hacks I tried to get Firefox to behave"
+date: "2019-10-17T22:12:03.284Z"
+description: "Dealing with some flexbox bugs. Using custom properties and rotations."
 ---
 import {WithRotation, DoesntScrollFF, WithoutRotation} from './demo.js';
 
 
-This was about a year ago. For the chat feature of our app at work, we relied on `flexbox` and `column-reverse` to set the order in which messages came in.
+This was about a year ago. For the chat feature of our app at work, we relied on [`flexbox`](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox) and `column-reverse` to set the order in which messages came in.
 
 Part of the challenge was keeping the scroll position at the *bottom* of the window.
 There's a [bug in Firefox](https://bugzilla.mozilla.org/show_bug.cgi?id=1042151) where it doesn't scroll when you apply `overflow-y` and `column-reverse`.
