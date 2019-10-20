@@ -19,4 +19,4 @@ It will ask for your name, the title and description of the post, and then injec
 
 - I'll review your PR
 
-- the site is hosted on Zeit and you can find your PR's deployed at [@TODO]
+- the site is hosted on Zeit and you can find your PR's deployed at [@TODOing]
