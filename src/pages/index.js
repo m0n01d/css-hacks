@@ -16,30 +16,35 @@ class BlogIndex extends React.Component {
         <SEO title="All posts" />
         <Bio />
         {posts.map(({ node }) => {
+          const author = node.frontmatter.author ? node.frontmatter.author : ""
           const title = node.frontmatter.title || node.fields.slug
           return (
-            <article key={node.fields.slug}>
+            <article
+              key={node.fields.slug}
+              style={{
+                marginBottom: "1.5rem",
+                boxShadow: "1px 1px 2px #ddd",
+                padding: "1rem 0.25rem",
+              }}
+            >
               <header>
-                <h3
-                  style={
-                    {
-                      // marginBottom: rhythm(1 / 4),
-                    }
-                  }
-                >
+                <h3>
                   <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
                     {title}
                   </Link>
                 </h3>
-                <small>{node.frontmatter.date}</small>
               </header>
               <section>
-                <p
+                <blockquote
                   dangerouslySetInnerHTML={{
                     __html: node.frontmatter.description || node.excerpt,
                   }}
                 />
               </section>
+              <div style={{ marginLeft: "0.25rem" }}>
+                <p>{author}</p>
+                <small>{node.frontmatter.date}</small>
+              </div>
             </article>
           )
         })}
@@ -68,6 +73,7 @@ export const pageQuery = graphql`
             date(formatString: "MMMM DD, YYYY")
             title
             description
+            author
           }
         }
       }

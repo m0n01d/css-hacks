@@ -3,32 +3,32 @@ title: Firefox Fun
 date: "2019-10-17T22:12:03.284Z"
 description: "Dealing with some flexbox bugs. Using custom properties and rotations."
 ---
-import {WithRotation, DoesntScrollFF, WithoutRotation} from './demo.js';
 
+import { WithRotation, DoesntScrollFF, WithoutRotation } from "./demo.js"
 
 This was about a year ago. For the chat feature of our app at work, we relied on [`flexbox`](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox) and `column-reverse` to set the order in which messages came in.
 
-Part of the challenge was keeping the scroll position at the *bottom* of the window.
+Part of the challenge was keeping the scroll position at the _bottom_ of the window.
 There's a [bug in Firefox](https://bugzilla.mozilla.org/show_bug.cgi?id=1042151) where it doesn't scroll when you apply `overflow-y` and `column-reverse`.
 
 <small>initial css:</small>
 
 ```css
-  display: flex;
-  flex-direction: column-reverse;
-  height: 225px;
-  overflow-y: scroll;
-  border: 1px solid #eee;
-  border-radius: 4px;
-  padding: 2px 4px;
+display: flex;
+flex-direction: column-reverse;
+height: 225px;
+overflow-y: scroll;
+border: 1px solid #eee;
+border-radius: 4px;
+padding: 2px 4px;
 ```
-<br/>
+
+<br />
 
 Taking advantage of the [`@supports` feature query](https://developer.mozilla.org/en-US/docs/Web/CSS/@supports), I can apply Firefox specific stylings.
 
 <small>This Div should not scroll in firefox</small>
 <DoesntScrollFF />
-
 
 <br/>
 <br/>
@@ -36,21 +36,22 @@ So to get around that I tried to use css rotation.
 
 I rotated the whole list 180deg, and then rotated each list item itself back 180deg so they are right side up.
 
-<br/>
+<br />
 
 ```css
 @supports (-moz-appearance: none) {
-    ul {
-      border: 1px solid red !important;
-      flex-direction: column !important;
+  ul {
+    border: 1px solid red !important;
+    flex-direction: column !important;
+    -moz-transform: rotate3d(1, 0, 0, 180deg);
+    & li {
       -moz-transform: rotate3d(1, 0, 0, 180deg);
-      & li {
-        -moz-transform: rotate3d(1, 0, 0, 180deg);
-      }
     }
   }
+}
 ```
-<br/>
+
+<br />
 
 <small>This div should be red in Firefox.</small>
 
@@ -64,11 +65,9 @@ screenshots. You'll just have to trust me
 
 So I had to go back to the drawing board.
 
-
 <br />
 
 This time I took advantage of [css custom properties](https://css-tricks.com/css-attr-function-got-nothin-custom-properties)
-
 
 I encode an `order` property on the list item as a css custom property.
 
@@ -90,14 +89,14 @@ essentially reverse the order with the flexbox `order` property
 
 ```css
 @supports (-moz-appearance: none) {
-    ul {
-      border: 1px solid blue !important;
-      flex-direction: column !important;
-      & li {
-        order: var(--order);
-      }
+  ul {
+    border: 1px solid blue !important;
+    flex-direction: column !important;
+    & li {
+      order: var(--order);
     }
   }
+}
 ```
 
 <small>This div should be blue in Firefox.</small>
@@ -107,9 +106,8 @@ essentially reverse the order with the flexbox `order` property
 Which as you can see almost works. The only problem is the scroll
 position is at the top. but the messages are in order.
 
-
 I forget exactly what changed, but this hack is no longer in our codebase.
-I've been meaning to write about it for a while. 
+I've been meaning to write about it for a while.
 Stay tuned for more.
 
 <small>*All snippets above are taken from the demo source code located in this repo. Not actual code from the app I work on.</small>

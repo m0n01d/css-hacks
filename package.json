@@ -14,6 +14,7 @@
     "@mdx-js/mdx": "^1.5.1",
     "@mdx-js/react": "^1.5.1",
     "babel-plugin-styled-components": "^1.10.6",
+    "fs-extra": "^8.1.0",
     "gatsby": "^2.16.4",
     "gatsby-image": "^2.2.29",
     "gatsby-plugin-feed": "^2.3.18",
@@ -39,6 +40,8 @@
     "styled-components": "^4.4.0"
   },
   "devDependencies": {
+    "dotenv": "^8.2.0",
+    "inquirer": "^7.0.0",
     "prettier": "^1.18.2"
   },
   "homepage": "https://css-hacks.com",
@@ -55,6 +58,7 @@
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "new": "node newPost.js && npm run develop",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing \""
