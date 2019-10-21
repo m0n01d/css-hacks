@@ -1,8 +1,5 @@
 {
   "name": "css-hacks",
-  "engines": {
-    "node": "10.x"
-  },
   "private": true,
   "description": "A place to share awesome frontend hacks and workarounds",
   "version": "0.1.0",
