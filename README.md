@@ -19,6 +19,4 @@ It will ask for your name, the title and description of the post, and then injec
 
 - I'll review your PR
 
-- the site is hosted on Zeit and you can find your PR's deployed at https://css-hacks-git-[BRANCH_NAME].torchship.now.sh/]
-
-For instance if your branch name was `feature/profile-card` the url will be `https://css-hacks-git-feature-profile-card.torchship.now.sh/`
+- the site is hosted on Zeit. You should see the url of your deployed feature branch in your pull request after you submit.
