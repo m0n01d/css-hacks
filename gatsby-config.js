@@ -26,14 +26,14 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        //trackingId: `ADD YOUR TRACKING ID HERE`, // @todo
+        trackingId: "UA-97080570-4",
       },
     },
     // `gatsby-plugin-feed`, // todo fix
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `CSS-Hacks`, // @todo
+        name: `CSS-Hacks`,
         short_name: `css-hacks`,
         start_url: `/`,
         background_color: `#ffffff`,
